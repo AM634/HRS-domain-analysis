@@ -1,0 +1,21 @@
+@startuml
+title 空室を確認して部屋を予約する コラボレーション図
+
+object "予約画面\n<<boundary>>" as Form
+object "予約処理\n<<control>>" as Control
+object "予約\n<<entity>>" as Reservation
+object "部屋\n<<entity>>" as Room
+object "利用者\n<<entity>>" as User
+
+User -- Form : 1. 宿泊条件を入力する
+Form -- Control : 2. 空室検索を依頼する
+Control -- Room : 3. 条件に合う空室を検索する
+Room -- Control : 4. 空室一覧を返す
+Control -- Form : 5. 空室一覧を表示する
+User -- Form : 6. 部屋を選択する
+Form -- Control : 7. 予約作成を依頼する
+Control -- Reservation : 8. 予約を作成する
+Reservation -- Control : 9. 予約番号を返す
+Control -- Form : 10. 予約番号を表示する
+
+@enduml
