@@ -1,0 +1,18 @@
+@startuml
+title 予約番号と氏名で予約をキャンセルする コラボレーション図
+
+object "キャンセル画面\n<<boundary>>" as Form
+object "予約キャンセル処理\n<<control>>" as Control
+object "予約管理\n<<control>>" as Manager
+object "予約\n<<entity>>" as Reservation
+object "利用者\n<<entity>>" as User
+
+User -- Form : 1. 予約番号と氏名を入力する
+Form -- Control : 2. キャンセルを依頼する
+Control -- Manager : 3. 予約検索・氏名確認・状態更新を依頼する
+Manager -- Reservation : 4. 予約を検索し CANCELLED に更新する
+Reservation -- Manager : 5. 更新後の予約を返す
+Manager -- Control : 6. キャンセル結果を返す
+Control -- Form : 7. キャンセル完了を表示する
+
+@enduml

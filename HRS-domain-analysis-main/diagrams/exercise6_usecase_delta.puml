@@ -1,0 +1,21 @@
+@startuml
+title HRS 演習6 ユースケース図（追加差分）
+
+left to right direction
+
+actor "利用者" as User
+
+rectangle "ホテル予約システム（HRS）" {
+
+  usecase "予約番号と氏名で\n予約をキャンセルする" as UC4 <<new>>
+}
+
+User -- UC4
+
+note right of UC4
+  演習6で追加
+  チェックイン前（RESERVED）の
+  予約のみキャンセル可能
+end note
+
+@enduml
